@@ -1,6 +1,6 @@
 :root {
-  --color-primary: #6741d9;
-  --color-primary-light: #7950f2;
+  --color-primary: #c427ec;
+  --color-primary-light: #c583e4;
   --color-text: #dee2e6;
   --color-text-dark: #adb5bd;
   --color-background-100: #343a40;
@@ -9,6 +9,8 @@
   --color-red: #fa5252;
   --color-red-dark: #e03131;
 }
+
+
 
 * {
   margin: 0;
@@ -74,6 +76,16 @@ body {
   font-size: 2rem;
   font-weight: 600;
   margin: 4.8rem;
+  animation: loading infinite ease .3s alternate;
+}
+
+@keyframes loading {
+  0% {
+    color: #212529;
+  }
+  100% {
+    color: #dee2e6;
+  }
 }
 
 .error {
