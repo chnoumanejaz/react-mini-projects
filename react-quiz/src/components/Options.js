@@ -1,16 +1,19 @@
 import { Toaster, toast } from 'react-hot-toast';
+import { useQuiz } from '../contexts/QuizContext';
 
-function Options({ question, dispatch, answer }) {
+function Options() {
+  const { questions: question, dispatch, answer, index: i } = useQuiz();
   const hasAnswered = answer !== null;
+
   return (
     <>
-      <Toaster/>
+      <Toaster />
       <div className="options">
-        {question.options.map((option, index) => (
+        {question[i].options.map((option, index) => (
           <button
             className={`btn btn-option ${index === answer ? 'answer' : ''} ${
               hasAnswered
-                ? index === question.correctOption
+                ? index === question[i].correctOption
                   ? 'correct'
                   : 'wrong'
                 : ''
@@ -19,7 +22,7 @@ function Options({ question, dispatch, answer }) {
             disabled={hasAnswered}
             onClick={() => {
               dispatch({ type: 'newAnswer', payload: index });
-              index === question.correctOption
+              index === question[i].correctOption
                 ? toast.success('Correct Answer 😉')
                 : toast.error('Wrong Answer 😥');
             }}>
